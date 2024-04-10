@@ -6,11 +6,11 @@
 namespace dogcom {
 
 awaitable<void> client_t::keepalive1() {
-
+    throw std::runtime_error("Not Implemented");
 }
 
 awaitable<void> client_t::keepalive2() {
-
+    throw std::runtime_error("Not Implemented");
 }
 
 
