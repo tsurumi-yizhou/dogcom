@@ -24,7 +24,7 @@ jobs:
         with:
           vcpkgDirectory: ${{ github.workspace }}/vcpkg
           runVcpkgInstall: true
-          vcpkgJsonGlob: ${{ github.workspace }}/vcpkg.json
+          vcpkgJsonGlob: vcpkg.json
 
       - uses: threeal/cmake-action@main
         with:
