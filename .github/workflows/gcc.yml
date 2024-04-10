@@ -11,15 +11,24 @@ jobs:
     runs-on:
       ubuntu-latest
     steps:
-      - uses: action/checkout@4.1.2
+      - uses: actions/checkout@latest
 
       - uses: egor-tensin/setup-gcc@v1
         with:
           version: latest
           platform: x64
 
+      - uses: lukka/get-cmake@latest
+
+      - uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgDirectory: ${{ github.workspace }}/vcpkg
+          runVcpkgInstall: true
+          vcpkgJsonGlob: ${{ github.workspace }}/vcpkg.json
+
       - uses: threeal/cmake-action@main
         with:
-          generator: Ninja
+          generator: Unix Makefiles
           c-compiler: gcc
           cxx-compiler: g++
+          options: CMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake

@@ -10,14 +10,23 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4.1.2
+      - uses: actions/checkout@latest
 
       - uses: TheMrMilchmann/setup-msvc-dev@v3
         with:
           arch: x64
+
+      - uses: lukka/get-cmake@latest
+
+      - uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgDirectory: ${{ github.workspace }}/vcpkg
+          runVcpkgInstall: true
+          vcpkgJsonGlob: ${{ github.workspace }}/vcpkg.json
 
       - uses: threeal/cmake-action@main
         with:
           generator: Ninja
           c-compiler: cl
           cxx-compiler: cl
+          options: CMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
