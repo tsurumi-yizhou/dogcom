@@ -2,6 +2,7 @@
 // Created by Don Yihtseu on 11/04/2024.
 //
 #include <random>
+#include <format>
 #include <boost/asio/read.hpp>
 #include <boost/asio/write.hpp>
 #include <boost/asio/use_awaitable.hpp>
