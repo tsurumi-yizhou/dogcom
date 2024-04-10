@@ -1,18 +1,15 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.28.0)
 project(dogcom)
 
-set(CMAKE_C_STANDARD_REQUIRED 99)
-set(FORCE_ENCRYPT OFF)
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-file(GLOB_RECURSE SRCS "src/*.c" "include/*.h")
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(include)
+file(GLOB_RECURSE SOURCE src/*.cpp)
+add_executable(${PROJECT_NAME} ${SOURCE})
 
-if (${FORCE_ENCRYPT})
-    add_compile_definitions(FORCE_ENCRYPT)
-endif ()
+find_package(Boost REQUIRED system log)
+target_link_libraries(${PROJECT_NAME} PRIVATE Boost::boost Boost::system Boost::log)
 
-add_executable(dogcom ${SRCS})
-
-if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    target_link_libraries(dogcom PRIVATE ws2_32)
-endif ()
+find_package(cryptopp CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE cryptopp::cryptopp)

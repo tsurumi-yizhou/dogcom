@@ -1,61 +1,13 @@
-# dogcom [![travis-ci](https://travis-ci.org/mchome/dogcom.svg "Build status")](https://travis-ci.org/mchome/dogcom) [![badge](https://img.shields.io/badge/%20built%20with-%20%E2%9D%A4-ff69b4.svg "build with love")](https://github.com/mchome/dogcom) [![version](https://img.shields.io/badge/stable%20-%20v1.6.2-4dc71f.svg "stable version")](https://github.com/mchome/dogcom/tree/v1.6.2)
+# dogcom
 
-[Drcom-generic](https://github.com/drcoms/drcom-generic) implementation in C.
-
-```
-Usage:
-        dogcom -m <dhcp/pppoe> -c <FILEPATH> [options <argument>]...
-
-Options:
-        --mode <dhcp/pppoe>, -m <dhcp/pppoe>  set your dogcom mode
-        --conf <FILEPATH>, -c <FILEPATH>      import configuration file
-        --bindip <IPADDR>, -b <IPADDR>        bind your ip address(default is 0.0.0.0)
-        --log <LOGPATH>, -l <LOGPATH>         specify log file
-        --802.1x, -x                          enable 802.1x
-        --daemon, -d                          set daemon flag
-        --eternal, -e                         set eternal flag
-        --verbose, -v                         set verbose flag
-        --help, -h                            display this help
-```
-
-Config file is compatible with [drcom-generic](https://github.com/drcoms/drcom-generic).
-
-#### Example:
-
-```bash
-$ dogcom -m dhcp -c dogcom.conf
-$ dogcom -m dhcp -c dogcom.conf -l /tmp/dogcom.log -v
-$ dogcom -m dhcp -c dogcom.conf -d # (PS: only on Linux build)
-$ dogcom -m pppoe -c dogcom.conf -x # (PS: only on Linux build)
-$ dogcom -m pppoe -c dogcom.conf -e # eternal dogcoming (default times is 5)
-$ dogcom -m pppoe -c dogcom.conf -v
-$ dogcom -m dhcp -c dogcom.conf -b 10.2.3.12 -v
-```
-
-#### To build:
-
-Dogcom use cmake for building.
-
-CMake will detect your platform and compiler, then decide how to compile.
-
-If you want force-encrypt, you should add 
-```cmake
-set(FORCE_ENCRYPT ON)
-```
-in CMakeLists.txt
-
-#### Openwrt-package
-[https://github.com/mchome/openwrt-dogcom](https://github.com/mchome/openwrt-dogcom)
-
-#### Tutorial
-[![asciicast](https://asciinema.org/a/9j7cj1s61jiczx2s0206tosjr.png)](https://asciinema.org/a/9j7cj1s61jiczx2s0206tosjr)
+![MSVC on Win](https://github.com/tsurumi-yizhou/dogcom/actions/workflows/msvc.yml/badge.svg)
+![GCC on Linux](https://github.com/tsurumi-yizhou/dogcom/actions/workflows/gcc.yml/badge.svg)
+![LLVM on OSX](https://github.com/tsurumi-yizhou/dogcom/actions/workflows/clang.yml/badge.svg)
 
 ### Thanks:
 - [gdut-drcom](https://github.com/chenhaowen01/gdut-drcom 'chenhaowen01')
 - [jlu-drcom-client](https://github.com/drcoms/jlu-drcom-client/tree/master/C-version 'feix')
 - [leetking](https://github.com/leetking 'leetking')
-
-### Special thanks:
 - [Drcom-generic](https://github.com/drcoms/drcom-generic 'ly0')
 
 ### License:

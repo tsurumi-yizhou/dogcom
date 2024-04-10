@@ -1,0 +1,23 @@
+name: Clang
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: action/checkout@v4.1.2
+
+      - uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: "17.0.0"
+          arch: "arm64"
+
+      - uses: threeal/cmake-action@main
+        with:
+          generator: Ninja
+          c-compiler: clang
+          cxx-compiler: clang++
