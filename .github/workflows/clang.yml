@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@v4
 
       - uses: KyleMayes/install-llvm-action@v2
         with:

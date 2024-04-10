@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@v4
 
       - uses: TheMrMilchmann/setup-msvc-dev@v3
         with:
