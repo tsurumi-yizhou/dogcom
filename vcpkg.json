@@ -2,7 +2,9 @@
   "name": "dogcom",
   "version-string": "1.0.0",
   "dependencies": [
-    "boost-asio", "boost-log",
+    "boost-asio",
+    "boost-log",
     "cryptopp"
-  ]
+  ],
+  "builtin-baseline": "1751f9f8c732c2e6f9e81ce56c10e4c4aa265b4a"
 }
